@@ -4,7 +4,10 @@ from django.forms import ModelForm
 
 # Create your models here.
 class Lista(models.Model):
-    name_lista = models.CharField(max_length=100)
+    name_lista = models.CharField(max_length=100)   
+    
+    def __str__(self):
+        return self.name_lista
 
 
 class Produtos(models.Model):
