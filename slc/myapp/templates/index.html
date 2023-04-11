@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
+    <title>Visualização</title>
 </head>
 <body>
-    (show)
+    <h2>Listas:</h2>
+    {% for lista in listas %}
+        <h2>{{ lista.name_lista }}</h2>
+        {%for produto in produtos%}
+            {% if produto.categoria == lista%}
+                <li>{{produto.name_produto}}</li>
+            {%endif%}
+        {% endfor %}
+    {% endfor %}
 </body>
 </html>
