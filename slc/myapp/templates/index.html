@@ -8,13 +8,14 @@
 </head>
 <body>
     <a href="{% url 'myapp:novalista' %}">Criar Lista ou Adicionar Produto</a>
-    <h2>Listas:</h2>
+    <h2>-=-=-=-Listas-=-=-=-</h2>
     {% for lista in listas %}
-        <h2>{{ lista.name_lista }}</h2>
+        <h2>{{ lista.name_lista }}:</h2>
         {%for produto in produtos%}
             {% if produto.categoria == lista%}
                 <li>{{produto.name_produto}}</li>
             {%endif%}
+            <br>
         {% endfor %}
     {% endfor %}
 

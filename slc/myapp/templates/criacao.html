@@ -9,7 +9,7 @@
 <body>
     <a href="{% url 'myapp:index' %}">Criar Lista ou Adicionar Produto</a>
     <h2>NOVA LISTA</h2>
-    <form method="post">
+    <form method="post" aria-required="false">
         {% csrf_token %}
 
         {{formLista.as_p}}
