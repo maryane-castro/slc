@@ -24,13 +24,14 @@ def cadastro(request):
         username = request.POST.get('username')
         senha = request.POST.get('senha')
 
-        user = User.objects.filter(username=username, password=senha).first()
+        user = User.objects.filter(username=username).first()
         if user:
             return HttpResponse("Nome de usuário já existente!")
 
         user = User.objects.create_user(username=username, password=senha)
         user.save()
-        return HttpResponse("Usuario cadastrado com sucesso")
+
+        return HttpResponseRedirect("../../")
 
 
 
@@ -46,7 +47,7 @@ def login(request):
             auth_login(request, user)
             return HttpResponseRedirect("../verlistas")
         else:
-            return HttpResponse("Email ou senha inválidos")
+            return HttpResponse("Email ou senha inválidos, volte e tente logar novamente.")
 
 
 
