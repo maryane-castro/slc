@@ -5,22 +5,83 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualização</title>
+    <style>
+        body{
+            padding: 25px;
+        }
+
+        .bloco{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+
+        .bloco > #links > a{
+            border-radius: 7px;
+            box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.61);
+            background-color: #4932bb;
+            color: rgb(228, 228, 228);
+            padding: 10px;
+            margin: 30px;
+            transition: 0.5s;
+        }
+
+        .bloco > #links > a:hover{
+            background-color: #7d67ee;
+            color: rgb(228, 228, 228);
+        }
+
+        li{
+            list-style: none;
+        }
+        p{
+            margin: 12px;
+        }
+
+        p > strong{
+            font-size: 1.5em;
+            color: #694aff;
+        }
+
+        p > a{
+            color: #ca2c2c;
+        }
+    </style>
 </head>
 <body>
-    <a href="{% url 'myapp:novalista' %}">Criar Lista</a>
-    <a href="{% url 'myapp:novoproduto' %}">Adicionar Produto</a>
-    <h2>-=-=-=-Listas-=-=-=-</h2>
-    {% for lista in listas %}
-        <h2>{{ lista.name_lista }} --- <a href="{% url 'myapp:deleteLista' lista.id %}">Apagar Lista</a></h2>
-        {%for produto in produtos%}
-            {% if produto.categoria == lista%}
-                <li>{{produto.name_produto}} <a href="{% url 'myapp:editar' produto.id %}">Editar</a></li> <a href="{% url 'myapp:deleteProduto' produto.id %}">Apagar Produto</a></li>
-                {% if produto.valor_produto > 0%}
-                    <li><p>Valor: {{produto.valor_produto}}</p></li>
+    <div class="bloco">
+        <div id="links">
+            <a href="{% url 'myapp:novalista' %}">Criar Lista</a>
+            <a href="{% url 'myapp:novoproduto' %}">Adicionar Produto</a>
+        </div>
+
+
+        <h2 style="color: #4932bb; font-size: 2em;">Listas</h2>
+        {% for lista in listas %}
+            <p><strong>{{ lista.name_lista }}</strong> ㅤㅤ;;ㅤㅤ <a href="{% url 'myapp:deleteLista' lista.id %}">apagarLista</a></p>
+            
+
+
+            {%for produto in produtos%}
+
+                {% if produto.categoria == lista%}
+                    <p>
+                        Porduto: {{produto.name_produto}} ㅤ  Valor: {{produto.valor_produto}}
+                        ㅤㅤ   
+                    <a href="{% url 'myapp:editar' produto.id %}">Editar</a> : <a href="{% url 'myapp:deleteProduto' produto.id %}">Apagar</a></p>
+                    
+
                 {%endif%}
-            {%endif%}
+                
+            {% endfor %}
+            <p>________________________________________________________________</p>
+
+
+
         {% endfor %}
-    {% endfor %}
+    </div>
 
     
 </body>
