@@ -5,10 +5,16 @@ from .models import Lista, Produtos, CriacaoListas, CriacaoProduto
 
 
 def cadastro(request):
-    pass
+    if request.method == "GET":
+        return render (request, 'cadastro.html')
+    else:
+        username = request.POST.get('username')
+        senha = request.POST.get('senha')
+
+
 
 def login(request):
-    pass
+    return render (request, 'login.html')
 
 def index(request):
     return render(request, 'index.html', {
