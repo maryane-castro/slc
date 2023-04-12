@@ -64,7 +64,7 @@
         </div>
 
 
-        <h2 style="color: #4932bb; font-size: 2em;">Listas</h2>
+        <h2 style="color: #4932bb; font-size: 2em;">Listas -- (total) {{produto.total}}</h2>
         {% for lista in listas %}
             <p><strong>{{ lista.name_lista }}</strong> ㅤㅤ;;ㅤㅤ <a href="{% url 'myapp:deleteLista' lista.id %}">apagarLista</a></p>
             

@@ -20,6 +20,13 @@ class Produtos(models.Model):
     
     def __sizeof__(self):
         return self.id
+    
+    '''def total(self):
+        result = 0
+        for x in Produtos:
+            result += (Produtos.valor_produto[x])
+        return result #retorna o resultado no fim, como tinhas retorna em cada iteração o 'x'''
+    
 
 
 
