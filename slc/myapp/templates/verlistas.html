@@ -48,6 +48,12 @@
         p > a{
             color: #ca2c2c;
         }
+
+        #normal{
+            font-size: 1.2em;
+            color: #000;
+        }
+
     </style>
 </head>
 <body>
@@ -68,7 +74,7 @@
 
                 {% if produto.categoria == lista%}
                     <p>
-                        Porduto: {{produto.name_produto}} ㅤ  Valor: {{produto.valor_produto}}
+                        Produto:  <strong id="normal">{{produto.name_produto}}</strong> ㅤ  Valor(R$): <strong id="normal">{{produto.valor_produto}}</strong>
                         ㅤㅤ   
                     <a href="{% url 'myapp:editar' produto.id %}">Editar</a> : <a href="{% url 'myapp:deleteProduto' produto.id %}">Apagar</a></p>
                     
