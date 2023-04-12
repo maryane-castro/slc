@@ -57,7 +57,7 @@ def verlistas(request):
     return HttpResponse("Você não está LOGADO")
 
 def novalista(request):
-    if request.user.is_authenticate:
+    if request.user.is_authenticated:
         formLista = CriacaoListas(request.POST or None)
         formProduto = CriacaoProduto(request.POST or None)
 
@@ -67,7 +67,15 @@ def novalista(request):
 
         if formProduto.is_valid():
             formProduto.save()
-            
-
         return render(request, 'criacao.html', {'formLista': formLista, 'formProduto' : formProduto})
+    
     return HttpResponse("Você não está LOGADO")
+
+
+
+'''def update(request, pk):
+    prod = Produtos.objects.filter(pk=pk)
+    formProduto = CriacaoProduto(request.POST or None, instance=prod)
+    if formProduto.is_valid():
+            formProduto.save()
+            return render(request, 'criacao.html', { 'formProduto' : formProduto})'''
