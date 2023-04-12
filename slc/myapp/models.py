@@ -26,9 +26,9 @@ class Produtos(models.Model):
 class CriacaoListas(ModelForm):
     class Meta:
         model = Lista
-        fields = ['name_lista', 'id']
+        fields = ['name_lista']
 
 class CriacaoProduto(ModelForm):
     class Meta:
         model = Produtos
-        fields = ['name_produto', 'valor_produto', 'categoria', 'id']
+        fields = ['name_produto', 'valor_produto', 'categoria']

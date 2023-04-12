@@ -99,5 +99,14 @@ def editar(request, id):
 
     
 
-def update():
-    pass
+def deleteLista(request, id):
+    lista = Lista.objects.get(id=id)
+    lista.delete()
+    return HttpResponseRedirect("../../verlistas")
+
+    
+
+def deleteProduto(request, id):
+    produto = Produtos.objects.get(id=id)
+    produto.delete()
+    return HttpResponseRedirect("../../verlistas")
