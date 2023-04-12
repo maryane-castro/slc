@@ -4,20 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualização</title>
+    <title>Inicio</title>
 </head>
 <body>
-    <a href="{% url 'myapp:novalista' %}">Criar Lista ou Adicionar Produto</a>
-    <h2>-=-=-=-Listas-=-=-=-</h2>
-    {% for lista in listas %}
-        <h2>{{ lista.name_lista }}:</h2>
-        {%for produto in produtos%}
-            {% if produto.categoria == lista%}
-                <li>{{produto.name_produto}}</li>
-            {%endif%}
-        {% endfor %}
-    {% endfor %}
-
-    
+    <h1>inicio</h1>
+    <a href="{% url 'myapp:cadastro' %}">Cadastro</a>
+    <a href="{% url 'myapp:login' %}">Login</a>
 </body>
 </html>
