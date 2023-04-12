@@ -5,19 +5,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criação</title>
+    <style>
+        body{
+            padding: 25px;
+        }
+
+        #aux{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 86vh;
+        }
+        .bloco{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        #aux > .bloco > #links > a{
+            border-radius: 7px;
+            box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.61);
+            background-color: #4932bb;
+            color: rgb(228, 228, 228);
+            padding: 10px;
+            margin: 30px;
+            transition: 0.5s;
+        }
+
+        
+        .bloco > #links > a:hover{
+            background-color: #7d67ee;
+            color: rgb(228, 228, 228);
+        }
+
+        form{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
-    <a href="{% url 'myapp:verlistas' %}">Ver listas</a>
-    <a href="{% url 'myapp:novalista' %}">Criar Lista</a>
-    
-    <h2>EDITAR PRODUTO</h2>
-    <form method="post" aria-required="false">
-        {% csrf_token %}
-
-        {{formProduto.as_p}}
-
-        <button type="submit">Update</button>
-    </form>
+    <div id="aux">
+        <div class="bloco">
+            <div id="links">
+                <a href="{% url 'myapp:verlistas' %}">Ver listas</a>
+            </div>
+        
+            <h2>EDITAR PRODUTO</h2>
+            <form method="post" aria-required="false">
+                {% csrf_token %}
+                {{formProduto.as_p}}
+                <button type="submit">Update</button>
+            </form>
+        </div>
+    </div>
 
 
     
