@@ -4,6 +4,12 @@ from .models import Lista, Produtos, CriacaoListas, CriacaoProduto
 # Create your views here.
 
 
+def cadastro(request):
+    pass
+
+def login(request):
+    pass
+
 def index(request):
     return render(request, 'index.html', {
         "listas": Lista.objects.all(), "produtos": Produtos.objects.all
