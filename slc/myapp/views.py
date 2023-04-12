@@ -9,6 +9,9 @@ from django.contrib.auth import login as auth_login
 
 
 
+def naologado():
+    return HttpResponse('Você nao esta logado')
+
 def index(request):
     return render(request, 'index.html')
 
@@ -54,28 +57,47 @@ def verlistas(request):
         return render(request, 'verlistas.html', {
             "listas": Lista.objects.all(), "produtos": Produtos.objects.all
         })
-    return HttpResponse("Você não está LOGADO")
+    naologado()
+
 
 def novalista(request):
     if request.user.is_authenticated:
         formLista = CriacaoListas(request.POST or None)
-        formProduto = CriacaoProduto(request.POST or None)
 
         if formLista.is_valid():
             formLista.save()
             
 
+        
+        return render(request, 'criacaolista.html', {'formLista': formLista})
+    
+    naologado()
+
+
+def novoproduto(request):
+    if request.user.is_authenticated:
+        formProduto = CriacaoProduto(request.POST or None)
+        
         if formProduto.is_valid():
             formProduto.save()
-        return render(request, 'criacao.html', {'formLista': formLista, 'formProduto' : formProduto})
-    
-    return HttpResponse("Você não está LOGADO")
+
+        return render(request, 'criacaoproduto.html', {'formProduto' : formProduto})
+    naologado()
 
 
 
-'''def update(request, pk):
-    prod = Produtos.objects.filter(pk=pk)
-    formProduto = CriacaoProduto(request.POST or None, instance=prod)
-    if formProduto.is_valid():
+def editar(request, id):
+    produto = Produtos.objects.get(id=id)
+    if request.user.is_authenticated:
+        formProduto = CriacaoProduto(request.POST or None, instance=produto)
+        
+        if formProduto.is_valid():
             formProduto.save()
-            return render(request, 'criacao.html', { 'formProduto' : formProduto})'''
+            return HttpResponseRedirect("../../verlistas")
+
+        return render(request, 'update.html', {"produtos":produto, 'formProduto' : formProduto})
+
+    
+
+def update():
+    pass

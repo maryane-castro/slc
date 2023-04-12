@@ -7,13 +7,14 @@
     <title>Visualização</title>
 </head>
 <body>
-    <a href="{% url 'myapp:novalista' %}">Criar Lista ou Adicionar Produto</a>
+    <a href="{% url 'myapp:novalista' %}">Criar Lista</a>
+    <a href="{% url 'myapp:novoproduto' %}">Adicionar Produto</a>
     <h2>-=-=-=-Listas-=-=-=-</h2>
     {% for lista in listas %}
         <h2>{{ lista.name_lista }}:</h2>
         {%for produto in produtos%}
             {% if produto.categoria == lista%}
-                <li>{{produto.name_produto}}</li>
+                <li>{{produto.name_produto}}  <a href="{% url 'myapp:editar' produto.id %}">Editar</a></li>
             {%endif%}
         {% endfor %}
     {% endfor %}

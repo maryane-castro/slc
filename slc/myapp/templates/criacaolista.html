@@ -7,7 +7,9 @@
     <title>Criação</title>
 </head>
 <body>
-    <a href="{% url 'myapp:verlistas' %}">Criar Lista ou Adicionar Produto</a>
+    <a href="{% url 'myapp:verlistas' %}">Ver listas</a>
+    <a href="{% url 'myapp:novoproduto' %}">Adicionar Produto</a>
+    
     <h2>NOVA LISTA</h2>
     <form method="post" aria-required="false">
         {% csrf_token %}
@@ -18,13 +20,6 @@
     </form>
 
 
-    <h2>NOVO PRODUTO</h2>
-    <form method="post">
-        {% csrf_token %}
-
-        {{formProduto.as_p}}
-
-        <button type="submit">Salvar</button>
-    </form>
+    
 </body>
 </html>

@@ -17,12 +17,16 @@ class Produtos(models.Model):
     valor_produto = models.FloatField(default= 0)
     categoria = models.ForeignKey(Lista, on_delete=models.CASCADE, default=None)
 
+    
+    def __sizeof__(self):
+        return self.id
+
 
 
 class CriacaoListas(ModelForm):
     class Meta:
         model = Lista
-        fields = ['name_lista']
+        fields = ['name_lista', 'id']
 
 class CriacaoProduto(ModelForm):
     class Meta:
