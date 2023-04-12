@@ -7,11 +7,12 @@
     <title>Cadastro</title>
     <style>
         body{
-            background-color: #fff;
+            background-color: #000000;
         }
 
         h1{
             text-align: center;
+            color: white;
         }
         form{
             display: flex;
@@ -24,19 +25,44 @@
             padding: 10px;
             margin: 5px;
         }
+
+        #aux{
+            width: 100%;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #bloco{
+            color: white;
+            font-weight: bolder;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #8870ff;
+            width: 50%;
+            height: 50%;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
     <h1>Cadastro</h1>
     
-    <form action="{%url 'myapp:cadastro' %}" method="POST">
-        {% csrf_token %}
+    <div id="aux">
+        <div id="bloco">
+            <form action="{%url 'myapp:cadastro' %}" method="POST">
+                {% csrf_token %}
+                <p>Usuário</p>
+                <input type="text" placeholder="Username" name="username">
+                <p>Senha</p>
+                <input type="password" placeholder="Senha" name="senha">
+                <input type="submit" value="cadastrar">
         
-        <input type="text" placeholder="Username" name="username">
-        <input type="password" placeholder="Senha" name="senha">
-
-        <input type="submit" value="cadastrar">
-        
-    </form>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

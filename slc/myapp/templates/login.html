@@ -7,11 +7,12 @@
     <title>Login</title>
     <style>
         body{
-            background-color: #fff;
+            background-color: #000000;
         }
 
         h1{
             text-align: center;
+            color: white;
         }
         form{
             display: flex;
@@ -25,19 +26,43 @@
             margin: 5px;
         }
 
+        #aux{
+            width: 100%;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #bloco{
+            color: white;
+            font-weight: bolder;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #8870ff;
+            width: 50%;
+            height: 50%;
+            border-radius: 10px;
+        }
+
     </style>
 </head>
 <body>
     <h1>Login</h1>
     
-    <form action="{%url 'myapp:login' %}" method="POST">
-        {% csrf_token %}
+    <aux>
+        <div id="bloco">
+            <form action="{%url 'myapp:login' %}" method="POST">
+                {% csrf_token %}
         
-        <input type="text" placeholder="Username" name="username">
-        <input type="password" placeholder="Senha" name="senha">
-
-        <input type="submit" value="logar">
+                <input type="text" placeholder="Username" name="username">
+                <input type="password" placeholder="Senha" name="senha">
+                <input type="submit" value="logar">
         
-    </form>
+            </form>
+        </div>
+    </aux>
 </body>
 </html>
