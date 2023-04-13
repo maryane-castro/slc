@@ -51,8 +51,6 @@ def login(request):
 
 
 
-
-
 def verlistas(request):
     if request.user.is_authenticated:
         total = 0
