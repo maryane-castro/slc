@@ -55,8 +55,11 @@ def login(request):
 
 def verlistas(request):
     if request.user.is_authenticated:
+        total = 0
+        for prod in Produtos.objects.all():
+            total = total + prod.valor_produto
         return render(request, 'verlistas.html', {
-            "listas": Lista.objects.all(), "produtos": Produtos.objects.all
+            "listas": Lista.objects.all(), "produtos": Produtos.objects.all, "valor" : total
         })
     naologado()
 
